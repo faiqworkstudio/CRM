@@ -1,0 +1,12 @@
+{
+  "name": "aeterna-crm-demo",
+  "private": true,
+  "type": "module",
+  "description": "Client demo: multilingual real estate website with admin, CRM and a Netlify Functions backend.",
+  "scripts": {
+    "dev": "node dev-server.mjs"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.3"
+  }
+}
