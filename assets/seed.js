@@ -1,5 +1,5 @@
-// Sample data for the client demo. Brand, projects, people and leads are all
-// fictional. Shared by the Netlify Function and the in-browser fallback.
+// Sample data for the client demo. The company (Aeterna Estates), its projects,
+// people and leads are all fictional; names were checked against real developments. Shared by the Netlify Function and the in-browser fallback.
 
 const img = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1400&q=70`;
 
@@ -54,8 +54,8 @@ export const PROJECTS = [
     },
   },
   {
-    id: "samui-sanctuary",
-    name: "Samui Sanctuary Villas",
+    id: "samui-shore",
+    name: "Aeterna Samui Shore Villas",
     categories: ["wellness"],
     location: "Koh Samui, Thailand",
     region: "thailand",
@@ -184,8 +184,8 @@ export const PROJECTS = [
     },
   },
   {
-    id: "anegada-lodges",
-    name: "Anegada Reef Lodges",
+    id: "anegada-eco",
+    name: "Aeterna Anegada Eco Lodges",
     categories: ["virgin-islands", "wellness"],
     location: "Anegada, British Virgin Islands",
     region: "bvi",

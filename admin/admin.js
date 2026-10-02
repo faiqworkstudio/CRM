@@ -75,7 +75,7 @@ function viewLogin(error = "") {
         <div class="err">${esc(error)}</div>
         <button class="btn btn--primary" style="height:42px">Sign in</button>
       </form>
-      <div class="login__hint">Demo password: <code>aeterna-demo</code><br>The live version would use secure logins per user, with optional two-factor sign-in.</div>
+      <div class="login__hint">Demo password: <code>aeterna-demo</code><br>Aeterna Estates and all projects, people and leads here are fictional sample data.<br>The live version would use secure logins per user, with optional two-factor sign-in.</div>
     </div></div>`;
   $("#loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -118,7 +118,7 @@ function layout(active, title, sub, actions, body) {
         </nav>
         <div class="side__foot">
           <span class="dot ${mode === "server" ? "" : "dot--local"}"></span>${mode === "server" ? "Connected to live backend" : "Offline demo mode (browser storage)"}<br>
-          <span style="color:#7f978d">Signed in as ${esc(ME)} · <a href="#" id="logout">Sign out</a></span>
+          <span style="color:#7f978d">Fictional sample company &amp; data<br>Signed in as ${esc(ME)} · <a href="#" id="logout">Sign out</a></span>
         </div>
       </aside>
       <main class="main" id="main">

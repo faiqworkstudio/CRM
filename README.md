@@ -1,6 +1,6 @@
 # Client demo: Aeterna Estates (website + admin + CRM)
 
-A working sample of the full system proposed to the real estate client. "Aeterna Estates", its projects, people and leads are fictional sample content.
+A working sample of the full system proposed to the real estate client. **Aeterna Estates is a fictional company.** Its projects, people and leads are invented sample content, so the demo does not show or imply any real client's brand or data. The names were checked against real developments, and the site states that it is fictional in the top bar, footer and admin login.
 
 - **Website:** `/`
 - **Admin & CRM:** `/admin/`. Demo password: `aeterna-demo`

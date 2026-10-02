@@ -228,7 +228,7 @@ function viewHome() {
             <div class="stat"><strong>24/7</strong><span>${esc(t("stat_support"))}</span></div>
           </div>
         </div>
-        <div class="about__img">${imgTag((projects.find((p) => p.id === "samui-sanctuary") || projects[0])?.gallery?.[1] || "", "")}</div>
+        <div class="about__img">${imgTag((projects.find((p) => p.id === "samui-shore") || projects[0])?.gallery?.[1] || "", "")}</div>
       </div>
     </section>
 
