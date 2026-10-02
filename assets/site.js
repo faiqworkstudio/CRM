@@ -1,6 +1,6 @@
 import { api } from "./api.js";
 import { T, LANG_META, t as tr } from "./i18n.js";
-import { AGENTS, LANGS } from "./seed.js";
+import { AGENTS, LANGS, CATEGORIES, REGIONS } from "./seed.js";
 
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -91,9 +91,7 @@ function applyLang() {
 
   $("#nav").innerHTML = `
     <a href="#projects">${esc(t("nav_projects"))}</a>
-    <a href="#/?cat=wellness" data-cat="wellness">${esc(t("cat_wellness"))}</a>
-    <a href="#/?cat=longevity" data-cat="longevity">${esc(t("cat_longevity"))}</a>
-    <a href="#/?cat=virgin-islands" data-cat="virgin-islands">${esc(t("cat_virgin-islands"))}</a>
+    ${CATEGORIES.map((c) => `<a href="#/?cat=${c}" data-cat="${c}">${esc(t("cat_" + c))}</a>`).join("")}
     <a href="#about">${esc(t("nav_about"))}</a>
     <a href="#contact">${esc(t("nav_contact"))}</a>`;
 
@@ -114,12 +112,9 @@ function applyLang() {
           </div>
         </div>
         <div><h4>${esc(t("nav_projects"))}</h4><ul>
-          <li><a href="#/?cat=wellness">${esc(t("cat_wellness"))}</a></li>
-          <li><a href="#/?cat=longevity">${esc(t("cat_longevity"))}</a></li>
-          <li><a href="#/?cat=virgin-islands">${esc(t("cat_virgin-islands"))}</a></li></ul></div>
+          ${CATEGORIES.map((c) => `<li><a href="#/?cat=${c}">${esc(t("cat_" + c))}</a></li>`).join("")}</ul></div>
         <div><h4>${esc(t("f_region"))}</h4><ul>
-          <li><a href="#/?region=thailand">${esc(t("region_thailand"))}</a></li>
-          <li><a href="#/?region=bvi">${esc(t("region_bvi"))}</a></li></ul></div>
+          ${REGIONS.map((r) => `<li><a href="#/?region=${r}">${esc(t("region_" + r))}</a></li>`).join("")}</ul></div>
         <div><h4>${esc(t("nav_contact"))}</h4><ul>
           <li><a href="mailto:sales@aeterna-demo.com">sales@aeterna-demo.com</a></li>
           <li><a href="tel:+6600000000" dir="ltr">+66 00 000 0000</a></li>
@@ -146,7 +141,7 @@ function renderCookie() {
 
 // ---------- Views ----------
 function heroImage() {
-  return (projects.find((p) => p.id === "aeterna-phuket") || projects[0])?.image || "";
+  return (projects.find((p) => p.id === "kamala-hills") || projects[0])?.image || "";
 }
 function collImage(cat) {
   const p = projects.find((x) => x.categories.includes(cat) && x.featured) || projects.find((x) => x.categories.includes(cat));
@@ -154,7 +149,7 @@ function collImage(cat) {
 }
 
 function viewHome() {
-  const cats = ["wellness", "longevity", "virgin-islands"];
+  const cats = CATEGORIES;
   $("#main").innerHTML = `
     <section class="hero">
       <div class="hero__img">${imgTag(heroImage(), "", true)}</div>
@@ -191,7 +186,7 @@ function viewHome() {
         <form class="filters" id="filters" role="search" aria-label="${esc(t("projects_title"))}">
           <label class="field field--q"><span>${esc(t("search_btn"))}</span><input class="input" type="search" name="q" placeholder="${esc(t("search_placeholder"))}"></label>
           <label class="field"><span>${esc(t("f_region"))}</span><select class="select" name="region">
-            <option value="">${esc(t("f_all"))}</option><option value="thailand">${esc(t("region_thailand"))}</option><option value="bvi">${esc(t("region_bvi"))}</option></select></label>
+            <option value="">${esc(t("f_all"))}</option>${REGIONS.map((r) => `<option value="${r}">${esc(t("region_" + r))}</option>`).join("")}</select></label>
           <label class="field"><span>${esc(t("f_type"))}</span><select class="select" name="type">
             <option value="">${esc(t("f_all"))}</option>${["villa", "condo", "penthouse", "land"].map((x) => `<option value="${x}">${esc(t("type_" + x))}</option>`).join("")}</select></label>
           <label class="field"><span>${esc(t("f_price"))}</span><select class="select" name="price">
@@ -446,7 +441,7 @@ function route() {
   if (m) { currentView = "project"; viewProject(m[1]); return; }
   if (h.startsWith("#/") || h === "#") {
     const hadFilters = readHashFilters();
-    document.title = "Aeterna Estates — Wellness & Longevity Residences (Demo)";
+    document.title = "Aeterna Estates — Villas & Condominiums in Thailand (Demo)";
     if (currentView !== "home") { currentView = "home"; viewHome(); }
     else renderGrid();
     if (hadFilters || h.startsWith("#/projects")) {

@@ -1,10 +1,10 @@
 // Demo API: one router used by the Netlify Function (real backend) and by the
 // in-browser fallback, so both behave the same.
-import { PROJECTS, SETTINGS, AGENTS, USERS, STAGES, CATEGORIES, LANGS, seedLeads } from "./seed.js";
+import { PROJECTS, SETTINGS, AGENTS, USERS, STAGES, CATEGORIES, REGIONS, LANGS, seedLeads } from "./seed.js";
 
 export const DEMO_PASSWORD = "aeterna-demo";
 // Bump when the sample data changes: saved data from an older version is replaced.
-export const STATE_VERSION = 3;
+export const STATE_VERSION = 4;
 const MAX_LEADS = 500;
 
 const clone = (o) => JSON.parse(JSON.stringify(o));
@@ -153,7 +153,7 @@ function sanitizeProject(input, existing) {
   p.name = str(input.name, 120) || p.name || "Untitled project";
   p.categories = (Array.isArray(input.categories) ? input.categories : p.categories || []).filter((c) => CATEGORIES.includes(c));
   p.location = str(input.location, 120) || p.location || "";
-  p.region = ["thailand", "bvi"].includes(input.region) ? input.region : p.region || "thailand";
+  p.region = REGIONS.includes(input.region) ? input.region : p.region || REGIONS[0];
   p.type = ["villa", "condo", "penthouse", "land"].includes(input.type) ? input.type : p.type || "villa";
   p.priceFrom = Math.max(0, Math.round(Number(input.priceFrom ?? p.priceFrom) || 0));
   p.beds = str(input.beds, 20) || p.beds || "";

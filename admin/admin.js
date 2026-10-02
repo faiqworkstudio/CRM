@@ -1,6 +1,6 @@
 import { api, backendMode } from "../assets/api.js";
 import { LANG_META } from "../assets/i18n.js";
-import { LANGS } from "../assets/seed.js";
+import { LANGS, FEATURES, REGIONS } from "../assets/seed.js";
 
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -25,8 +25,8 @@ const STAGE_LABEL = { new: "New", contacted: "Contacted", viewing: "Viewing", ne
 const SOURCE_LABEL = { website: "Website", facebook: "Facebook", instagram: "Instagram", whatsapp: "WhatsApp", referral: "Referral" };
 const TYPE_LABEL = { enquiry: "Enquiry", brochure: "Brochure request", viewing: "Viewing request", waitlist: "Waiting list" };
 const STATUS_LABEL = { prelaunch: "Pre-launch", construction: "Under construction", selling: "Now selling", ready: "Ready", soldout: "Sold out" };
-const CAT_LABEL = { wellness: "Wellness", longevity: "Longevity", "virgin-islands": "Virgin Islands" };
-const FEATURES = ["longevity_clinic", "private_pool", "biohacking", "organic_kitchen", "concierge_doctor", "spa", "yoga_pavilion", "beachfront", "rental_program", "mountain_view", "community_garden", "marina"];
+const CAT_LABEL = { beachfront: "Beachfront", city: "City Living", investment: "Investment" };
+const REGION_LABEL = { bangkok: "Bangkok", phuket: "Phuket", samui: "Koh Samui", huahin: "Hua Hin", chiangmai: "Chiang Mai", pattaya: "Pattaya" };
 const FEATURE_LABEL = (f) => f.replace(/_/g, " ").replace(/^./, (c) => c.toUpperCase());
 
 let D = null; // bootstrap data
@@ -387,7 +387,7 @@ function viewProjects() {
 function viewProjectEdit(id) {
   const isNew = id === "new";
   const p = isNew
-    ? { id: "", name: "", categories: [], location: "", region: "thailand", type: "villa", priceFrom: 0, beds: "", size: "", status: "prelaunch", completion: "", featured: false, published: false, image: "", features: [], mapQuery: "", i18n: {} }
+    ? { id: "", name: "", categories: [], location: "", region: REGIONS[0], type: "villa", priceFrom: 0, beds: "", size: "", status: "prelaunch", completion: "", featured: false, published: false, image: "", features: [], mapQuery: "", i18n: {} }
     : projectOf(id);
   if (!p) { location.hash = "#/projects"; return; }
   let tab = "en";
@@ -399,8 +399,8 @@ function viewProjectEdit(id) {
           <h2>Details</h2>
           <label class="field"><span>Project name</span><input class="input" name="name" value="${esc(p.name)}" required maxlength="120"></label>
           <div class="row2">
-            <label class="field"><span>Location</span><input class="input" name="location" value="${esc(p.location)}"></label>
-            <label class="field"><span>Destination</span><select class="select" name="region"><option value="thailand" ${p.region === "thailand" ? "selected" : ""}>Thailand</option><option value="bvi" ${p.region === "bvi" ? "selected" : ""}>British Virgin Islands</option></select></label>
+            <label class="field"><span>Address / area</span><input class="input" name="location" value="${esc(p.location)}"></label>
+            <label class="field"><span>Location</span><select class="select" name="region">${REGIONS.map((r) => `<option value="${r}" ${p.region === r ? "selected" : ""}>${REGION_LABEL[r]}</option>`).join("")}</select></label>
           </div>
           <div class="row2">
             <label class="field"><span>Property type</span><select class="select" name="type">${["villa", "condo", "penthouse", "land"].map((t) => `<option ${p.type === t ? "selected" : ""} value="${t}">${t[0].toUpperCase() + t.slice(1)}</option>`).join("")}</select></label>

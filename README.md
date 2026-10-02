@@ -10,7 +10,7 @@ A working sample of the full system proposed to the real estate client. **Aetern
 | Client requirement | Where in the demo |
 |---|---|
 | Worldwide audience; project presentation | Home, three collections, project pages with gallery, key facts, highlights and map |
-| Search & filter: Wellness / Longevity / Virgin Islands | Hero search, collection cards, filter bar (collection, destination, type, budget, status), sorting; links like `#/?cat=longevity` can be shared |
+| Search & filter | Hero search, collection cards (Beachfront / City Living / Investment), filter bar (collection, location, type, budget, status), sorting; links like `#/?cat=longevity` can be shared |
 | Multilingual: English and Thai switched on (German, Chinese and Arabic are translated but off; re-enable in `LANGS` in `assets/seed.js`) | Language switcher; Arabic is fully right-to-left when enabled; script-specific fonts; `?lang=` in the URL plus hreflang tags |
 | Standard pages | Home, projects, project detail, about, contact, footer with legal links |
 | Backend customization | Admin → Projects & content: edit details, collections, highlights, photo, publish/feature, and translations side by side per language |
@@ -25,7 +25,7 @@ A working sample of the full system proposed to the real estate client. **Aetern
 ## Suggested pitch walkthrough (5 minutes)
 
 1. Open the website in English, then switch to **ไทย** (Thai).
-2. Click **Longevity**, add the **British Virgin Islands** filter, then open a project.
+2. Click **Beachfront**, set the location to **Phuket**, then open a project.
 3. Click **Download brochure** and submit the form. The thank-you message shows the new lead ID.
 4. Open the **admin** (password above). The lead is at the top of the Dashboard, already assigned to an agent who speaks the buyer's language.
 5. Under **Pipeline**, drag the lead to *Contacted*. Open it, add a note and look at the activity log.
