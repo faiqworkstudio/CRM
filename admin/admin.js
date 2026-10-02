@@ -1,9 +1,9 @@
 import { api, backendMode } from "../assets/api.js";
 import { LANG_META } from "../assets/i18n.js";
+import { LANGS } from "../assets/seed.js";
 
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-const LANGS = Object.keys(LANG_META);
 const ME = "Admin (Client)";
 
 const I = {
@@ -369,7 +369,7 @@ function trStatus(p) {
 }
 
 function viewProjects() {
-  layout("projects", "Projects & content", "Add and edit projects, photos, collections and all five languages. Changes appear on the website straight away.",
+  layout("projects", "Projects & content", "Add and edit projects, photos, collections and translations. Changes appear on the website straight away.",
     `<a class="btn" href="../" target="_blank">${I.ext}View website</a><a class="btn btn--primary" href="#/projects/new">${I.plus}New project</a>`,
     `<div class="pgrid">${D.projects.map((p) => `
       <article class="pcard">
@@ -494,7 +494,7 @@ const INTEGRATIONS = [
   ["facebook", "Facebook Lead Ads", "Meta sends a webhook for each new lead; the backend fetches the answers from the Graph API and creates the lead.", "#1877f2", I.fb],
   ["instagram", "Instagram Lead Ads", "Same Meta connection as Facebook. Leads are tagged with Instagram as the source.", "#c13584", "IG"],
   ["ga4", "Google Analytics 4", "Page views, searches, filters, form opens and generate_lead events, loaded only after cookie consent.", "#e37400", "GA"],
-  ["gsc", "Google Search Console", "Domain verified; sitemap with all five language versions (hreflang) submitted.", "#4285f4", "GSC"],
+  ["gsc", "Google Search Console", "Domain verified; sitemap with each language version (hreflang) submitted.", "#4285f4", "GSC"],
   ["pixel", "Meta Pixel + Conversions API", "Tracks Lead events from the browser and server for better ad optimisation.", "#0866ff", "PX"],
   ["whatsapp", "WhatsApp Business", "Click-to-chat buttons on every page; optional new-lead alerts to the sales team.", "#25d366", "WA"],
   ["line", "LINE Official Account", "Chat button for Thai buyers; optional LINE Notify alerts for new leads.", "#06c755", "LINE"],
@@ -521,7 +521,7 @@ function viewIntegrations() {
         ${k === "line" ? `<label class="field"><span>LINE ID</span><input class="input" data-set="lineId" value="${esc(s.lineId)}"></label>` : ""}
         ${k === "email" ? `<label class="field"><span>Send alerts to</span><input class="input" data-set="notifyEmail" value="${esc(s.notifyEmail)}"></label>` : ""}
         ${k === "webhook" ? `<label class="field"><span>Webhook URL</span><input class="input" data-set="webhookUrl" value="${esc(s.webhookUrl)}" placeholder="https://hooks.zapier.com/…"></label>` : ""}
-        ${k === "gsc" ? `<p><a href="../sitemap.xml" target="_blank">sitemap.xml</a> · 5 languages · hreflang tags</p>` : ""}
+        ${k === "gsc" ? `<p><a href="../sitemap.xml" target="_blank">sitemap.xml</a> · ${LANGS.length} languages · hreflang tags</p>` : ""}
       </section>`).join("")}</div>`);
 
   document.querySelectorAll("[data-int]").forEach((el) => el.addEventListener("change", async () => {

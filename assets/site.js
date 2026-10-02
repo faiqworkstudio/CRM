@@ -1,6 +1,6 @@
 import { api } from "./api.js";
 import { T, LANG_META, t as tr } from "./i18n.js";
-import { AGENTS } from "./seed.js";
+import { AGENTS, LANGS } from "./seed.js";
 
 const $ = (s, el = document) => el.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
@@ -23,7 +23,6 @@ const ICON = {
 
 // ---------- State ----------
 const params = new URLSearchParams(location.search);
-const LANGS = Object.keys(LANG_META);
 let lang = params.get("lang");
 if (!LANGS.includes(lang)) {
   try { lang = localStorage.getItem("aeterna-lang"); } catch {}
@@ -224,7 +223,7 @@ function viewHome() {
           <div class="stats">
             <div class="stat"><strong>${projects.length}</strong><span>${esc(t("stat_projects"))}</span></div>
             <div class="stat"><strong>40+</strong><span>${esc(t("stat_countries"))}</span></div>
-            <div class="stat"><strong>5</strong><span>${esc(t("stat_languages"))}</span></div>
+            <div class="stat"><strong>${LANGS.length}</strong><span>${esc(t("stat_languages"))}</span></div>
             <div class="stat"><strong>24/7</strong><span>${esc(t("stat_support"))}</span></div>
           </div>
         </div>

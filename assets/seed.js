@@ -3,7 +3,10 @@
 
 const img = (id) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1400&q=70`;
 
-export const LANGS = ["en", "th", "de", "zh", "ar"];
+// Languages switched on for the site and admin. German, Chinese and Arabic
+// (right-to-left) are fully translated: add them back here to re-enable.
+export const ALL_LANGS = ["en", "th", "de", "zh", "ar"];
+export const LANGS = ["en", "th"];
 
 export const CATEGORIES = ["wellness", "longevity", "virgin-islands"];
 
@@ -282,14 +285,15 @@ export function seedLeads(now = Date.now()) {
   const leads = [];
   const stageWeights = ["new", "new", "new", "contacted", "contacted", "contacted", "viewing", "viewing", "negotiation", "won", "lost"];
   for (let i = 0; i < 64; i++) {
-    const [name, language, country] = PEOPLE[i % PEOPLE.length];
+    const [name, personLang, country] = PEOPLE[i % PEOPLE.length];
+    const language = LANGS.includes(personLang) ? personLang : "en";
     const project = pick(PROJECTS);
     const [source, utmSource, utmMedium, utmCampaign] = pick(SOURCES);
     const ageDays = Math.floor(Math.pow(r(), 1.6) * 84); // spread over 12 weeks, slightly more recent
     const createdAt = now - ageDays * 86400000 - Math.floor(r() * 86400000);
     let stage = pick(stageWeights);
     if (ageDays < 2) stage = "new";
-    const agent = AGENTS.find((a) => a.langs[0] === language) || AGENTS[0];
+    const agent = language === "th" ? AGENTS[0] : AGENTS[1 + (i % 3)];
     const email = name.toLowerCase().normalize("NFD").replace(/[^a-z ]/g, "").trim().replace(/ +/g, ".") + "@example.com";
     const lead = {
       id: "L" + String(1001 + i),

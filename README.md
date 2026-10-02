@@ -11,7 +11,7 @@ A working sample of the full system proposed to the real estate client. **Aetern
 |---|---|
 | Worldwide audience; project presentation | Home, three collections, project pages with gallery, key facts, highlights and map |
 | Search & filter: Wellness / Longevity / Virgin Islands | Hero search, collection cards, filter bar (collection, destination, type, budget, status), sorting; links like `#/?cat=longevity` can be shared |
-| Multilingual TH / EN / DE / ZH / AR | Language switcher; Arabic is fully right-to-left; script-specific fonts; `?lang=` in the URL plus hreflang tags |
+| Multilingual: English and Thai switched on (German, Chinese and Arabic are translated but off; re-enable in `LANGS` in `assets/seed.js`) | Language switcher; Arabic is fully right-to-left when enabled; script-specific fonts; `?lang=` in the URL plus hreflang tags |
 | Standard pages | Home, projects, project detail, about, contact, footer with legal links |
 | Backend customization | Admin → Projects & content: edit details, collections, highlights, photo, publish/feature, and translations side by side per language |
 | Sales pipeline / lead management | Admin → Dashboard, Pipeline (drag and drop), Leads (search, filters, CSV export), lead detail with notes, agent assignment and an activity log |
@@ -24,13 +24,13 @@ A working sample of the full system proposed to the real estate client. **Aetern
 
 ## Suggested pitch walkthrough (5 minutes)
 
-1. Open the website in English, switch to **العربية** (right-to-left), then **中文**.
+1. Open the website in English, then switch to **ไทย** (Thai).
 2. Click **Longevity**, add the **British Virgin Islands** filter, then open a project.
 3. Click **Download brochure** and submit the form. The thank-you message shows the new lead ID.
 4. Open the **admin** (password above). The lead is at the top of the Dashboard, already assigned to an agent who speaks the buyer's language.
 5. Under **Pipeline**, drag the lead to *Contacted*. Open it, add a note and look at the activity log.
 6. Under **Integrations**, click **Send test lead** to show a Facebook Lead Ad arriving.
-7. Under **Projects & content**, change a price or the Arabic text, save, then click **Preview**. The website updates immediately.
+7. Under **Projects & content**, change a price or the Thai text, save, then click **Preview**. The website updates immediately.
 8. To clean up before the next pitch, go to **Settings → Reset demo data**.
 
 ## How it works

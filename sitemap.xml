@@ -4,8 +4,5 @@
     <loc>/?lang=en</loc>
     <xhtml:link rel="alternate" hreflang="en" href="/?lang=en"/>
     <xhtml:link rel="alternate" hreflang="th" href="/?lang=th"/>
-    <xhtml:link rel="alternate" hreflang="de" href="/?lang=de"/>
-    <xhtml:link rel="alternate" hreflang="zh" href="/?lang=zh"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="/?lang=ar"/>
   </url>
 </urlset>
