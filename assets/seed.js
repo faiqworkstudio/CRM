@@ -21,7 +21,7 @@ export const USERS = [
   { name: "Mei Lin Chen", email: "meilin@aeterna-demo.com", role: "Sales Agent" },
   { name: "Omar Haddad", email: "omar@aeterna-demo.com", role: "Sales Agent" },
   { name: "Content Team", email: "content@aeterna-demo.com", role: "Content Editor" },
-  { name: "OXE Marketing", email: "dev@oxemarketingth.com", role: "Developer" },
+  { name: "Web Developer", email: "developer@aeterna-demo.com", role: "Developer" },
 ];
 
 export const STAGES = ["new", "contacted", "viewing", "negotiation", "won", "lost"];
@@ -229,7 +229,7 @@ export const SETTINGS = {
   },
   ga4Id: "G-DEMO12345",
   pixelId: "000000000000000",
-  whatsapp: "+66 82 448 0050",
+  whatsapp: "+66 00 000 0000",
   lineId: "@aeterna-demo",
   webhookUrl: "",
 };

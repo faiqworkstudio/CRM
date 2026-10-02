@@ -131,7 +131,7 @@ function applyLang() {
 
   $("#chat").innerHTML = `
     <a class="line" href="https://line.me/" target="_blank" rel="noopener" aria-label="LINE">${ICON.line}</a>
-    <a class="wa" href="https://wa.me/66824480050" target="_blank" rel="noopener" aria-label="WhatsApp">${ICON.wa}</a>`;
+    <a class="wa" href="https://wa.me/66000000000" target="_blank" rel="noopener" aria-label="WhatsApp">${ICON.wa}</a>`;
 
   renderCookie();
 }
@@ -241,7 +241,7 @@ function viewHome() {
           <ul>
             <li>${ICON.mail}<a href="mailto:sales@aeterna-demo.com">sales@aeterna-demo.com</a></li>
             <li>${ICON.phone}<a href="tel:+6600000000" dir="ltr">+66 00 000 0000</a></li>
-            <li>${ICON.wa}<a href="https://wa.me/66824480050" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li>${ICON.wa}<a href="https://wa.me/66000000000" target="_blank" rel="noopener">WhatsApp</a></li>
             <li>${ICON.line}<a href="https://line.me/" target="_blank" rel="noopener">LINE @aeterna-demo</a></li>
           </ul>
         </div>
@@ -349,7 +349,7 @@ function viewProject(id) {
             <div class="price"><small>${esc(t("from"))}</small><strong dir="ltr">${money(p.priceFrom)}</strong></div>
             <button class="btn" data-open="${primary}" data-project="${esc(p.id)}">${esc(t(primary === "waitlist" ? "waitlist" : "book_viewing"))}</button>
             <button class="btn btn--ghost" data-open="brochure" data-project="${esc(p.id)}">${esc(t("brochure"))}</button>
-            <a class="btn btn--ghost" href="https://wa.me/66824480050?text=${encodeURIComponent(p.name)}" target="_blank" rel="noopener">${ICON.wa.replace("<svg", '<svg width="18" height="18"')} WhatsApp</a>
+            <a class="btn btn--ghost" href="https://wa.me/66000000000?text=${encodeURIComponent(p.name)}" target="_blank" rel="noopener">${ICON.wa.replace("<svg", '<svg width="18" height="18"')} WhatsApp</a>
             <hr>
             <div class="aside__agent"><span class="avatar">${esc(agent.name.split(" ").map((w) => w[0]).join(""))}</span><span><strong style="color:var(--ink)">${esc(agent.name)}</strong><br><span dir="ltr">${agent.langs.map((l) => l.toUpperCase()).join(" · ")}</span></span></div>
           </aside>
