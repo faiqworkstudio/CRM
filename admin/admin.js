@@ -117,7 +117,7 @@ function layout(active, title, sub, actions, body) {
           <a href="../" target="_blank">${I.ext}View website</a>
         </nav>
         <div class="side__foot">
-          <span class="dot ${mode === "server" ? "" : "dot--local"}"></span>${mode === "server" ? "Connected to live backend" : "Offline demo mode (browser storage)"}<br>
+          <span class="dot"></span>System online<br>
           <span style="color:#7f978d">Fictional sample company &amp; data<br>Signed in as ${esc(ME)} · <a href="#" id="logout">Sign out</a></span>
         </div>
       </aside>
@@ -150,7 +150,6 @@ function viewDashboard() {
   layout("dashboard", "Dashboard", "Lead performance across the website, Facebook, Instagram and chat.",
     `<a class="btn" href="../" target="_blank">${I.ext}Open website</a>${fbButton}`,
     `
-    ${mode === "server" ? "" : '<div class="banner">Running in offline demo mode: data is stored in this browser only. Deployed on Netlify, the same screens use the shared live backend.</div>'}
     <div class="kpis">
       <div class="kpi"><small>Leads, last 30 days</small><strong>${s.last30}</strong><span><span class="${delta >= 0 ? "up" : "down"}">${delta >= 0 ? "▲" : "▼"} ${Math.abs(delta)}%</span> vs previous 30 days</span></div>
       <div class="kpi"><small>New, not yet contacted</small><strong>${s.newCount}</strong><span>${s.unassigned} unassigned</span></div>
