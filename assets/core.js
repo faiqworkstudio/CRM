@@ -3,13 +3,15 @@
 import { PROJECTS, SETTINGS, AGENTS, USERS, STAGES, CATEGORIES, LANGS, seedLeads } from "./seed.js";
 
 export const DEMO_PASSWORD = "aeterna-demo";
+// Bump when the sample data changes: saved data from an older version is replaced.
+export const STATE_VERSION = 2;
 const MAX_LEADS = 500;
 
 const clone = (o) => JSON.parse(JSON.stringify(o));
 
 export function createState(now = Date.now()) {
   return {
-    version: 1,
+    version: STATE_VERSION,
     seededAt: now,
     projects: clone(PROJECTS),
     leads: seedLeads(now),

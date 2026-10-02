@@ -1,7 +1,7 @@
 // API client for the demo. Uses the real backend at /api when it is
 // available; otherwise runs the same router in the browser (localStorage), so
 // the demo still works when opened from a plain static server.
-import { createState, handle } from "./core.js";
+import { createState, handle, STATE_VERSION } from "./core.js";
 
 const BASE = "/api";
 const LS_KEY = "aeterna-demo-state";
@@ -10,7 +10,7 @@ let mode = null; // "server" | "local"
 function loadLocal() {
   try {
     const s = JSON.parse(localStorage.getItem(LS_KEY));
-    if (s && s.version) return s;
+    if (s && s.version === STATE_VERSION) return s;
   } catch {}
   const s = createState();
   saveLocal(s);

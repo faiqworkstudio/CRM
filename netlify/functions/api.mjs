@@ -1,6 +1,6 @@
 // Backend for the client demo. Stores everything as one JSON document
 // in Netlify Blobs; outside Netlify (local dev) it keeps state in memory.
-import { createState, handle } from "../../assets/core.js";
+import { createState, handle, STATE_VERSION } from "../../assets/core.js";
 
 export const config = { path: "/api/*" };
 
@@ -48,7 +48,7 @@ export default async function (req) {
 
   const store = await openStore();
   let state = await store.get();
-  if (!state || !state.version) {
+  if (!state || state.version !== STATE_VERSION) {
     state = createState();
     await store.set(state);
   }
